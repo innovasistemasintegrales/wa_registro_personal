@@ -9,7 +9,7 @@ btnRegistrar.addEventListener('click', () => {
   registrarPersona()
 })
 
-function listarPersona() {
+/* function listarPersona() {
   fetch('http://localhost:3000/listar')
     .then(response => response.json())
     .then(data => {
@@ -32,8 +32,58 @@ function listarPersona() {
 function leerPDF(pdf) {
   let innerHTML = `<iframe src="${pdf}" type="application/pdf" width="100%" height="100%"></iframe>`
   return innerHTML;
-}
+} */
 
+/*---------------------------------------------------------------------------------------------------------------------*/
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  const fragmento = document.createDocumentFragment();
+
+  let listaGeneralRegistros = {
+    dni: 123123, 
+    nombre: "Juan Pérez", 
+    numero: "987654321", 
+    grado: "Bachiller en Ingeniería", 
+    institucion: "Universidad Nacional de Ingeniería", 
+    cv: "Enlace al CV o resumen profesional", 
+  };
+
+  const cardReactivo = document.querySelector('#cardReactivo');
+  const templateRegistros = document.querySelector('#templateRegistros').content;
+
+  function listarRegistros() {
+    cardReactivo.innerHTML = ""; 
+
+    db.collection('registros').onSnapshot((coleccion) => {
+      const array = coleccion.docs;
+
+      listaGeneralRegistros = new Array(array.length);
+
+      for (let i = 0; i < array.length; i++) {
+        const documento = array[i].data();
+        listaGeneralRegistros[i] = documento;
+      }
+      listaGeneralRegistros.forEach((registro) => {
+        templateRegistros.querySelector('.dni-registros').textContent = registro.dni;
+        templateRegistros.querySelector('.nombre-registros').textContent = registro.nombre;
+        templateRegistros.querySelector('.numero-registros').textContent = registro.numero;
+        templateRegistros.querySelector('.Grado-registros').textContent = registro.grado;
+        templateRegistros.querySelector('.IdE-registros').textContent = registro.institucion;
+        templateRegistros.querySelector('.CV-registros').textContent = registro.cv;
+
+        const clone = templateRegistros.cloneNode(true); 
+        fragmento.appendChild(clone); 
+      });
+
+      cardReactivo.appendChild(fragmento); 
+    });
+  }
+
+  listarRegistros();
+});
+
+/*------------------------------------------------------------------------------------------------------------------------------------*/
 function registrarPersona() {
   let dni = document.querySelector("#dni").value;
   let nombres = document.querySelector("#nombres").value;

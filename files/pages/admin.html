@@ -18,23 +18,51 @@
                     <div class="row">
                         <div class="col">
                             <h4 class="fw-bold text-center pt-4">Lista de clientes registrados</h4>
-                            <div class="card table-responsive-sm p-4">
-                                <table id="tableId" class="table table-hover">
-                                    <thead>
-                                      <tr>
-                                        <th>Orden</th>
-                                        <th>Empresa</th>
-                                        <th>RUC</th>
-                                        <th>Representante</th>
-                                        <th>Celular</th>
-                                        <th>Facebook</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody id="tb_registros" class="overflow-auto">
-                                      <!-- Contenido de tabla -->
-                                    </tbody>
-                                </table>
+                            <!-- Card reactivo -->
+                    <div id="cardReactivo">
+                        <div class="text-center">
+                            <h3 class="fw-bold">BANDEJA DE ENTRADA</h3>
+                        </div>
+                        <hr>
+                    </div>
+                    <template id="templateRegistros">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col my-1 p-2 border border-2 rounded d-lg-flex justify-content-between">
+                                    <div class="d-flex flex-lg-column">
+                                        <span class="fw-bold">DNI: &nbsp</span>
+                                        <span class="dni-registros"></span>
+                                    </div>
+                                    <div class="d-flex flex-lg-column">
+                                        <span class="fw-bold">Nombre y apellidos: &nbsp</span>
+                                        <span class="nombre-registros">asunto-registro</span>
+                                    </div>
+                                    <div class="d-flex flex-lg-column">
+                                        <span class="fw-bold">Número de Celular: &nbsp</span>
+                                        <span class="numero-registros"></span>
+                                    </div>
+                                    <div class="d-flex flex-lg-column">
+                                        <span class="fw-bold">Grado de Instrucción: &nbsp</span>
+                                        <span class="Grado-registros"></span>
+                                    </div>
+                                    <div class="d-flex flex-lg-column">
+                                        <span class="fw-bold">Institución de Estudio: &nbsp</span>
+                                        <span class="IdE-registros"></span>
+                                    </div>
+                                    <div class="d-flex flex-lg-column">
+                                        <span class="fw-bold">CV: &nbsp</span>
+                                        <span class="CV-registros"></span>
+                                    </div>
+                                    <div class="text-center">
+                                        <span class="fw-bold">Opciones</span>
+                                        <div>
+                                            <span class="btn-ver-registros"><i class="bi bi-search"></i>&nbsp Ver</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                    </template>                    
                         </div>
                     </div>
                 </div>
@@ -48,7 +76,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
     <script src="../js/script.js"></script>
     <script>
-        listarAdmin();
+        listarRegistros();
     </script>
 </body>
 </html>
