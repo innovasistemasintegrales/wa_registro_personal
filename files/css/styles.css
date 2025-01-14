@@ -61,3 +61,36 @@ body{
 #login{
     height: 100vh;
 }
+
+@media (max-width: 425px) {
+    
+    @media (max-width: 425px) {
+        .titles-container {
+            display: none;
+        }
+    }
+
+    .card .row {
+        flex-direction: column; 
+        text-align: left; 
+        padding: 10px;
+    }
+
+    .card .col {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .card .col:last-child {
+        border-bottom: none; 
+    }
+
+    .dni-registros::before { content: "DNI: "; font-weight: bold; }
+    .nombre-registros::before { content: "Nombre: "; font-weight: bold; }
+    .numero-registros::before { content: "Celular: "; font-weight: bold; }
+    .Grado-registros::before { content: "Grado: "; font-weight: bold; }
+    .IdE-registros::before { content: "Institución: "; font-weight: bold; }
+    .CV-registros::before { content: "CV: "; font-weight: bold; }
+}

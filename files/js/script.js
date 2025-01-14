@@ -2,6 +2,29 @@
 let btnTest = document.querySelector("#data")
 let btnRegistrar = document.querySelector("#btn_enviar");
 
+const fragmento = document.createDocumentFragment();
+
+let listaGeneralRegistros = [{
+  dni: 123123, 
+  nombre: "Juan Perez", 
+  numero: "987654321", 
+  grado: "Bachiller en Ingenieria", 
+  institucion: "Universidad Nacional de Ingenieria", 
+  cv: "Enlace al CV o resumen profesional", 
+},
+{
+  dni: 456456,
+  nombre: "Maria Gonzalez",
+  numero: "987123456",
+  grado: "Licenciada en Administración",
+  institucion: "Universidad de Lima",
+  cv: "Enlace al CV o resumen profesional"
+},
+];
+
+let cardReactivo = document.querySelector('#cardReactivo');
+const templateRegistros = document.querySelector('#templateRegistros').content;
+
 btnTest.addEventListener('click', () => {
   listarPersona()
 })
@@ -36,52 +59,36 @@ function leerPDF(pdf) {
 
 /*---------------------------------------------------------------------------------------------------------------------*/
 
-document.addEventListener('DOMContentLoaded', () => {
-
-  const fragmento = document.createDocumentFragment();
-
-  let listaGeneralRegistros = {
-    dni: 123123, 
-    nombre: "Juan Pérez", 
-    numero: "987654321", 
-    grado: "Bachiller en Ingeniería", 
-    institucion: "Universidad Nacional de Ingeniería", 
-    cv: "Enlace al CV o resumen profesional", 
-  };
-
-  const cardReactivo = document.querySelector('#cardReactivo');
-  const templateRegistros = document.querySelector('#templateRegistros').content;
+  document.addEventListener("DOMContentLoaded", function () {
+    listarRegistros();
+  });
 
   function listarRegistros() {
-    cardReactivo.innerHTML = ""; 
-
-    db.collection('registros').onSnapshot((coleccion) => {
-      const array = coleccion.docs;
-
-      listaGeneralRegistros = new Array(array.length);
-
-      for (let i = 0; i < array.length; i++) {
-        const documento = array[i].data();
-        listaGeneralRegistros[i] = documento;
-      }
-      listaGeneralRegistros.forEach((registro) => {
-        templateRegistros.querySelector('.dni-registros').textContent = registro.dni;
-        templateRegistros.querySelector('.nombre-registros').textContent = registro.nombre;
-        templateRegistros.querySelector('.numero-registros').textContent = registro.numero;
-        templateRegistros.querySelector('.Grado-registros').textContent = registro.grado;
-        templateRegistros.querySelector('.IdE-registros').textContent = registro.institucion;
-        templateRegistros.querySelector('.CV-registros').textContent = registro.cv;
-
-        const clone = templateRegistros.cloneNode(true); 
-        fragmento.appendChild(clone); 
-      });
-
-      cardReactivo.appendChild(fragmento); 
+    cardReactivo.innerHTML = ""; // Limpiar el contenedor
+  
+    // Recorrer el array de registros
+    listaGeneralRegistros.forEach((registro) => {
+      // Actualizar el contenido del template
+      templateRegistros.querySelector('.dni-registros').textContent = registro.dni;
+      templateRegistros.querySelector('.nombre-registros').textContent = registro.nombre;
+      templateRegistros.querySelector('.numero-registros').textContent = registro.numero;
+      templateRegistros.querySelector('.Grado-registros').textContent = registro.grado;
+      templateRegistros.querySelector('.IdE-registros').textContent = registro.institucion;
+      templateRegistros.querySelector('.CV-registros').textContent = registro.cv;
+  
+      // Clonar el template y agregarlo al fragmento
+      const clone = templateRegistros.cloneNode(true);
+      fragmento.appendChild(clone);
     });
+  
+    // Agregar el fragmento al contenedor
+    cardReactivo.appendChild(fragmento);
   }
-
-  listarRegistros();
-});
+  
+  // Llamar a listarRegistros al cargar la página
+  document.addEventListener("DOMContentLoaded", function () {
+    listarRegistros();
+  });
 
 /*------------------------------------------------------------------------------------------------------------------------------------*/
 function registrarPersona() {

@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-  <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
     <title>Administrador</title>
-  <link rel="icon" href="https://innova.pe/public_images/ico-logo-innova.ico" type="image/x-icon" />
+    <link rel="icon" href="https://innova.pe/public_images/ico-logo-innova.ico" type="image/x-icon" />
 </head>
 <body>
     <div id="principal">
@@ -18,51 +18,36 @@
                     <div class="row">
                         <div class="col">
                             <h4 class="fw-bold text-center pt-4">Lista de clientes registrados</h4>
-                            <!-- Card reactivo -->
-                    <div id="cardReactivo">
-                        <div class="text-center">
-                            <h3 class="fw-bold">BANDEJA DE ENTRADA</h3>
-                        </div>
-                        <hr>
-                    </div>
-                    <template id="templateRegistros">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col my-1 p-2 border border-2 rounded d-lg-flex justify-content-between">
-                                    <div class="d-flex flex-lg-column">
-                                        <span class="fw-bold">DNI: &nbsp</span>
-                                        <span class="dni-registros"></span>
-                                    </div>
-                                    <div class="d-flex flex-lg-column">
-                                        <span class="fw-bold">Nombre y apellidos: &nbsp</span>
-                                        <span class="nombre-registros">asunto-registro</span>
-                                    </div>
-                                    <div class="d-flex flex-lg-column">
-                                        <span class="fw-bold">Número de Celular: &nbsp</span>
-                                        <span class="numero-registros"></span>
-                                    </div>
-                                    <div class="d-flex flex-lg-column">
-                                        <span class="fw-bold">Grado de Instrucción: &nbsp</span>
-                                        <span class="Grado-registros"></span>
-                                    </div>
-                                    <div class="d-flex flex-lg-column">
-                                        <span class="fw-bold">Institución de Estudio: &nbsp</span>
-                                        <span class="IdE-registros"></span>
-                                    </div>
-                                    <div class="d-flex flex-lg-column">
-                                        <span class="fw-bold">CV: &nbsp</span>
-                                        <span class="CV-registros"></span>
-                                    </div>
-                                    <div class="text-center">
-                                        <span class="fw-bold">Opciones</span>
-                                        <div>
-                                            <span class="btn-ver-registros"><i class="bi bi-search"></i>&nbsp Ver</span>
+                            <div class="card container titles-container">
+                                <div class="row fw-bold text-center py-2">
+                                    <div class="col">DNI</div>
+                                    <div class="col">Nombre y apellidos</div>
+                                    <div class="col">Número de Celular</div>
+                                    <div class="col">Grado de Instrucción</div>
+                                    <div class="col">Institución de Estudio</div>
+                                    <div class="col">CV</div>
+                                    <div class="col">Opciones</div>
+                                </div>
+                            </div>
+                            <div id="cardReactivo">
+                                <div class="text-center"></div>
+                                <hr>
+                            </div>
+                            <template id="templateRegistros">
+                                <div class=" card container">
+                                    <div class="row text-center py-2">
+                                        <div class="col dni-registros"></div>
+                                        <div class="col nombre-registros"></div>
+                                        <div class="col numero-registros"></div>
+                                        <div class="col Grado-registros"></div>
+                                        <div class="col IdE-registros"></div>
+                                        <div class="col CV-registros"></div>
+                                        <div class="col">
+                                            <span class="btn-ver-registros btn"><i class="bi bi-search"></i> Ver</span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </template>                    
+                            </template>                    
                         </div>
                     </div>
                 </div>
