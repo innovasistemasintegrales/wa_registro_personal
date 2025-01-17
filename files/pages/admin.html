@@ -19,35 +19,103 @@
                         <div class="col">
                             <h4 class="fw-bold text-center pt-4">Lista de clientes registrados</h4>
                             <div class="card container titles-container">
-                                <div class="row fw-bold text-center py-2">
-                                    <div class="col">DNI</div>
-                                    <div class="col">Nombre y apellidos</div>
-                                    <div class="col">Número de Celular</div>
-                                    <div class="col">Grado de Instrucción</div>
-                                    <div class="col">Institución de Estudio</div>
-                                    <div class="col">CV</div>
-                                    <div class="col">Opciones</div>
+                                <div class="row">
+                                    <div class="col my-1 p-2 rounded d-lg-flex justify-content-between">
+                                        <div class="d-flex flex-lg-column">
+                                            <span class="fw-bold">DNI</span>
+                                        </div>
+                                        <div class="d-flex flex-lg-column">
+                                            <span class="fw-bold">Nombre y Apellidos</span>
+                                        </div>
+                                        <div class="d-flex flex-lg-column">
+                                            <span class="fw-bold">Número de Celular</span>
+                                        </div>
+                                        <div class="d-flex flex-lg-column">
+                                            <span class="fw-bold">Grado de Instrucción</span>
+                                        </div>
+                                        <div class="d-flex flex-lg-column">
+                                            <span class="fw-bold">Institución de Estudio</span>
+                                        </div>
+                                        <div class="d-flex flex-lg-column">
+                                            <span class="fw-bold">CV</span>
+                                        </div>
+                                        <div class="text-center">
+                                            <span class="fw-bold">Opciones</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </div>                            
                             <div id="cardReactivo">
                                 <div class="text-center"></div>
                                 <hr>
                             </div>
                             <template id="templateRegistros">
-                                <div class=" card container">
-                                    <div class="row text-center py-2">
-                                        <div class="col dni-registros"></div>
-                                        <div class="col nombre-registros"></div>
-                                        <div class="col numero-registros"></div>
-                                        <div class="col Grado-registros"></div>
-                                        <div class="col IdE-registros"></div>
-                                        <div class="col CV-registros"></div>
-                                        <div class="col">
-                                            <span class="btn-ver-registros btn"><i class="bi bi-search"></i> Ver</span>
+                                <div class="card container">
+                                    <div class="row">
+                                        <div class="col my-1 p-2 rounded d-lg-flex justify-content-between">
+                                            <div class="d-flex flex-lg-column">
+                                                <span class="dni-registros"></span>
+                                            </div>
+                                            <div class="d-flex flex-lg-column">
+                                                <span class="nombre-registros"></span>
+                                            </div>
+                                            <div class="d-flex flex-lg-column">
+                                                <span class="numero-registros"></span>
+                                            </div>
+                                            <div class="d-flex flex-lg-column">
+                                                <span class="grado-registros"></span>
+                                            </div>
+                                            <div class="d-flex flex-lg-column">
+                                                <span class="instituticion-registros"></span>
+                                            </div>
+                                            <div class="d-flex flex-lg-column">
+                                                <span class="curriculum-registros"></span>
+                                            </div>
+                                            <div class="text-center">
+                                                <span class="fw-bold"></span>
+                                                <div>
+                                                    <span class="btn-ver-registros"><i class="bi bi-search"></i>&nbsp Ver</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </template>                    
+                            </template>               
+                            <template id="templateRegistrosMovil">
+                                <div class="card container">
+                                    <div class="row">
+                                        <div class="col my-1 p-2 rounded">
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bold"></span>
+                                                <span class="dni-registros"></span>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bold"></span>
+                                                <span class="nombre-registros"></span>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bold"></span>
+                                                <span class="numero-registros"></span>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bold"></span>
+                                                <span class="grado-registros"></span>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bold"></span>
+                                                <span class="instituticion-registros"></span>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bold"></span>
+                                                <span class="curriculum-registros"></span>
+                                            </div>
+                                            <div class="text-center mt-2">
+                                                <span class="btn-ver-registros"><i class="bi bi-search"></i>&nbsp Ver</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>                                                               
                         </div>
                     </div>
                 </div>

@@ -62,35 +62,73 @@ body{
     height: 100vh;
 }
 
+/*---------------------------------------------------Estilos cards admin-----------------------------------------------------------*/
+/* Vista por defecto (PC) */
+.titles-container .row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.d-lg-flex > div {
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+}
+
+.card .row .col {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    gap: 10px;
+}
+.d-lg-flex {
+    text-align: center; 
+    flex: 1;
+}
+
+.row {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px; 
+    align-items: center;
+}
+
+.d-lg-flex > div {
+    min-width: 150px;
+    text-align: center;
+}
+
+/* Vista telefono */
 @media (max-width: 425px) {
-    
-    @media (max-width: 425px) {
-        .titles-container {
-            display: none;
-        }
+    .titles-container {
+        display: none; 
     }
 
     .card .row {
+        display: flex;
         flex-direction: column; 
-        text-align: left; 
+        text-align: center; 
         padding: 10px;
+        gap: 5px; 
     }
 
     .card .col {
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         padding: 5px 0;
         border-bottom: 1px solid #ddd;
     }
 
-    .card .col:last-child {
-        border-bottom: none; 
+    .card .col span:first-child {
+        font-weight: bold;
     }
 
-    .dni-registros::before { content: "DNI: "; font-weight: bold; }
-    .nombre-registros::before { content: "Nombre: "; font-weight: bold; }
-    .numero-registros::before { content: "Celular: "; font-weight: bold; }
-    .Grado-registros::before { content: "Grado: "; font-weight: bold; }
-    .IdE-registros::before { content: "Institución: "; font-weight: bold; }
-    .CV-registros::before { content: "CV: "; font-weight: bold; }
+    .card .col:last-child {
+        border-bottom: none;
+    }
+
+    .card .btn-ver-registros {
+        color: blue;
+    }
 }

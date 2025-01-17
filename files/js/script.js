@@ -24,6 +24,7 @@ let listaGeneralRegistros = [{
 
 let cardReactivo = document.querySelector('#cardReactivo');
 const templateRegistros = document.querySelector('#templateRegistros').content;
+const templateRegistrosMovil = document.querySelector('#templateRegistrosMovil').content;
 
 btnTest.addEventListener('click', () => {
   listarPersona()
@@ -59,36 +60,49 @@ function leerPDF(pdf) {
 
 /*---------------------------------------------------------------------------------------------------------------------*/
 
-  document.addEventListener("DOMContentLoaded", function () {
-    listarRegistros();
-  });
+document.addEventListener("DOMContentLoaded", function () {
+  listarRegistros();
+});
 
-  function listarRegistros() {
-    cardReactivo.innerHTML = ""; // Limpiar el contenedor
-  
-    // Recorrer el array de registros
+function listarRegistros() {
+  // Limpia el contenido existente
+  cardReactivo.innerHTML = "";
+
+  // Verifica si la vista es móvil o escritorio
+  if (window.innerWidth <= 425) {
     listaGeneralRegistros.forEach((registro) => {
-      // Actualizar el contenido del template
-      templateRegistros.querySelector('.dni-registros').textContent = registro.dni;
-      templateRegistros.querySelector('.nombre-registros').textContent = registro.nombre;
-      templateRegistros.querySelector('.numero-registros').textContent = registro.numero;
-      templateRegistros.querySelector('.Grado-registros').textContent = registro.grado;
-      templateRegistros.querySelector('.IdE-registros').textContent = registro.institucion;
-      templateRegistros.querySelector('.CV-registros').textContent = registro.cv;
-  
-      // Clonar el template y agregarlo al fragmento
-      const clone = templateRegistros.cloneNode(true);
-      fragmento.appendChild(clone);
+        templateRegistrosMovil.querySelector('.dni-registros').innerHTML = `<strong>DNI:</strong> ${registro.dni}`;
+        templateRegistrosMovil.querySelector('.nombre-registros').innerHTML = `<strong>Nombre:</strong> ${registro.nombre}`;
+        templateRegistrosMovil.querySelector('.numero-registros').innerHTML = `<strong>Celular:</strong> ${registro.numero}`;
+        templateRegistrosMovil.querySelector('.grado-registros').innerHTML = `<strong>Grado:</strong> ${registro.grado}`;
+        templateRegistrosMovil.querySelector('.instituticion-registros').innerHTML = `<strong>Institución:</strong> ${registro.institucion}`;
+        templateRegistrosMovil.querySelector('.curriculum-registros').innerHTML = `<strong>CV:</strong> ${registro.cv}`;
+
+        const clone = templateRegistrosMovil.cloneNode(true);
+        fragmento.appendChild(clone);
     });
-  
-    // Agregar el fragmento al contenedor
-    cardReactivo.appendChild(fragmento);
+  } else {
+      listaGeneralRegistros.forEach((registro) => {
+          templateRegistros.querySelector('.dni-registros').textContent = registro.dni;
+          templateRegistros.querySelector('.nombre-registros').textContent = registro.nombre;
+          templateRegistros.querySelector('.numero-registros').textContent = registro.numero;
+          templateRegistros.querySelector('.grado-registros').textContent = registro.grado;
+          templateRegistros.querySelector('.instituticion-registros').textContent = registro.institucion;
+          templateRegistros.querySelector('.curriculum-registros').textContent = registro.cv;
+
+          const clone = templateRegistros.cloneNode(true);
+          fragmento.appendChild(clone);
+      });
   }
-  
-  // Llamar a listarRegistros al cargar la página
-  document.addEventListener("DOMContentLoaded", function () {
-    listarRegistros();
-  });
+
+  // Agrega los nuevos elementos generados al DOM
+  cardReactivo.appendChild(fragmento);
+}
+
+// Escucha el evento resize para cambiar dinámicamente el contenido
+window.addEventListener('resize', function () {
+  listarRegistros(); // Actualiza los registros al cambiar el tamaño de la ventana
+});
 
 /*------------------------------------------------------------------------------------------------------------------------------------*/
 function registrarPersona() {
