@@ -1,15 +1,14 @@
-// Your web app's Firebase configuration
 /* import { getStorage } from 'firebase/storage' */
 const express = require('express');
 const cors = require('cors');
-const db = require('./database');
+const db = require('./files/js/database');
 const fs = require('node:fs');
 const multer = require('multer');
 
 const app = express();
 const port = 3000;
 
-const upload = multer({ dest: '../archivos/' });
+const upload = multer({ dest: './files/pages/archivos/'});
 
 app.use(cors());
 app.use(express.json());
@@ -26,7 +25,6 @@ app.get('/listar', (req, res) =>{
       return;
     }
     res.json(results);
-    
   });
 });
 
@@ -39,13 +37,13 @@ app.post('/registrar', upload.single('file'), (req, res) =>{
     return res.status(400).send('Error: No se cargó ningún archivo.');
   }
 
-  const newPath = `../archivos/${req.body.dni + req.file.originalname}`;
+  const newPath = `./files/pages/archivos/${req.body.dni + req.file.originalname}`;
   fs.renameSync(req.file.path, newPath);
 
   /* Creamos la nueva ruta de imagen para guardar en DB */
-  const dbFilePath = `/files/archivos/${req.body.dni + req.file.originalname}`;
+  const dbFilePath = `archivos/${req.body.dni + req.file.originalname}`;
 
-  let query = `INSERT INTO Personas (DNI, Nombres, Telefono, Grado_instruccion, Institucion, Descripcion, CV, Fecha_registro, Rol, Usuario, Contrasena) 
+  let query = `INSERT INTO personas (dni, nombres, telefono, grado_instruccion, institucion, descripcion, cv, fecha_registro, rol, usuario, contrasena) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
   let values = [
     dni,
@@ -63,8 +61,17 @@ app.post('/registrar', upload.single('file'), (req, res) =>{
   // Ejecutar la consulta
   db.query(query, values, (err, result) => {
     const success = true;
+    const failure = true;
+    const duplicate = true;
     if (err) {
-      console.error('Error al insertar los datos:', err);
+      if (failure) {
+        if (err.code == 'ER_DUP_ENTRY') {
+          res.json({ status: 'duplicate', message: 'Ya se encuntra registrado' });
+        }else{
+          res.json({ status: 'failure', message: 'Error al guardar datos' });
+          console.error('Error al insertar los datos:', err);
+        }
+      }
       return;
     }
     if (success) {

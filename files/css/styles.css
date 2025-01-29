@@ -9,6 +9,11 @@ body{
     background: #D5E9FF;
 }
 
+a{
+    text-decoration: none;
+    color: #050713;
+}
+
 #header {
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(10px);
@@ -46,10 +51,10 @@ body{
 #registro{
     padding-top: 80px;
 }
-
-#principal{
-    
+#seccionAdmin{
+    padding-top: 80px;
 }
+
 .contenedor{
     background: #ffffff;
 }
@@ -60,4 +65,21 @@ body{
 
 #login{
     height: 100vh;
+}
+
+/* ================================ Administrador ================================*/
+.over-descripcion{
+    width: 100px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.btn-ver-registro{
+    text-decoration: none;
+    background: #4dea0f;
+    padding: 5px 15px 5px 15px;
+    color: #050713;
+    cursor: pointer;
+    border-radius: 15px;
 }
